@@ -13,6 +13,7 @@ const UrlTable = () => {
                     <div className="content-wrapper">
                         Ihis is url table page
                     </div>
+                    <Footer/>
                 </div>
             </div>
         </div>
