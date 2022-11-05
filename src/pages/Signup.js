@@ -4,8 +4,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./signup.css"
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    const navigate = useNavigate();
     return (
         <div className="container-scroller">
             <div className="container-fluid page-body-wrapper">
@@ -15,8 +17,8 @@ const Signup = () => {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="ms-auto">
-                            <Button className="mainbar-button" variant="outline-light text-white m-2">Login</Button>
-                            <Button className="mainbar-button" variant="outline-light text-white m-2">Sign up</Button> 
+                            <Button onClick={()=>navigate("/login")}  className="mainbar-button" variant="outline-light text-white m-2">Login</Button>
+                            <Button onClick={()=>navigate("/register")}  className="mainbar-button" variant="outline-light text-white m-2">Sign up</Button> 
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
@@ -55,7 +57,7 @@ const Signup = () => {
                                         <button className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN UP</button>
                                     </div>
                                     <div className="text-center mt-4 font-weight-light">
-                                        Already have an account? <span style={{ cursor: "pointer", textDecoration: "underline" }} className="text-primary">Login</span>
+                                        Already have an account? <span onClick={()=>navigate("/login")}  style={{ cursor: "pointer", textDecoration: "underline" }} className="text-primary">Login</span>
                                     </div>
                                 </form>
                             </div>

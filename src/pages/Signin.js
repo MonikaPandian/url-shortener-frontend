@@ -4,8 +4,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./signup.css"
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
+    const navigate = useNavigate();
     return (
         <div className="container-scroller">
             <div className="container-fluid page-body-wrapper">
@@ -15,8 +17,8 @@ const Signin = () => {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="ms-auto">
-                                <Button className="mainbar-button" variant="outline-light text-white m-2">Login</Button>
-                                <Button className="mainbar-button" variant="outline-light text-white m-2">Sign up</Button>
+                                <Button onClick={()=>navigate("/login")} className="mainbar-button" variant="outline-light text-white m-2">Login</Button>
+                                <Button onClick={()=>navigate("/register")} className="mainbar-button" variant="outline-light text-white m-2">Sign up</Button>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
@@ -38,13 +40,13 @@ const Signin = () => {
                                         <input type="password" className="form-control form-control-lg" id="exampleInputPassword" placeholder="Password" />
                                     </div>
                                     <div className="mb-4">
-                                        <span className="text-primary" style={{ cursor: "pointer", textDecoration: "underline" }}>Forgot Password ?</span>
+                                        <span onClick={()=>navigate("/forgot-password")} className="text-primary" style={{ cursor: "pointer", textDecoration: "underline" }}>Forgot Password ?</span>
                                     </div>
                                     <div className="mt-3">
                                         <span className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</span>
                                     </div>
                                     <div className="text-center mt-4 font-weight-light">
-                                        Don't have an account? <span style={{ cursor: "pointer", textDecoration: "underline" }} className="text-primary">Create</span>
+                                        Don't have an account? <span onClick={()=>navigate("/register")} style={{ cursor: "pointer", textDecoration: "underline" }} className="text-primary">Create</span>
                                     </div>
                                 </form>
                             </div>

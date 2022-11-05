@@ -4,8 +4,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./signup.css"
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 const ResetPassword = () => {
+    const navigate = useNavigate();
     return (
         <div className="container-scroller">
             <div className="container-fluid page-body-wrapper">
@@ -15,8 +17,8 @@ const ResetPassword = () => {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="ms-auto">
-                                <Button className="mainbar-button" variant="outline-light text-white m-2">Login</Button>
-                                <Button className="mainbar-button" variant="outline-light text-white m-2">Sign up</Button>
+                                <Button onClick={()=>navigate("/login")}  className="mainbar-button" variant="outline-light text-white m-2">Login</Button>
+                                <Button onClick={()=>navigate("/register")}  className="mainbar-button" variant="outline-light text-white m-2">Sign up</Button>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
