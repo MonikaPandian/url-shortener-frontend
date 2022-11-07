@@ -5,9 +5,10 @@ import Footer from '../components/Footer';
 
 const UrlTable = () => {
     const[urls, setUrls] = useState([])
+    const[newLongUrl, setNewLongUrl] = useState("")
 
     const getUrls = () => {
-        fetch("https://url-shortener-110.herokuapp.com/api/url/shorten", {
+        fetch("http://localhost:9005/api/url", {
             method: "GET"
         })
             .then((data) => data.json())
@@ -16,6 +17,20 @@ const UrlTable = () => {
     }
 
     useEffect(() => getUrls(), [urls]);
+
+    const addUrl = (e) => {
+        e.preventDefault()      
+        const newUrl = {
+           longUrl: newLongUrl
+        }
+        fetch("http://localhost:9005/api/url/shorten", {
+            method: "POST",
+            body: JSON.stringify(newUrl),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+    }
 
     return (
         <div className="container-scroller">
@@ -35,7 +50,7 @@ const UrlTable = () => {
                                 {urls.map((url,index)=>{
                                     return (
                                         <tr key={index}>
-                                        <th scope="row">{index}</th>
+                                        <th scope="row">{index + 1}</th>
                                         <td>{url.shortUrl}</td>                                   
                                     </tr>    
                                     )
