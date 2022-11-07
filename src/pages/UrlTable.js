@@ -39,8 +39,7 @@ const UrlTable = () => {
                                         <td>{url.shortUrl}</td>                                   
                                     </tr>    
                                     )
-                                })}
-                                                          
+                                })}                                                          
                             </tbody>
                         </table>
                     </div>
