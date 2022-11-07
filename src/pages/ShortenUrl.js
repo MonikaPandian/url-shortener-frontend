@@ -12,7 +12,7 @@ const ShortenUrl = () => {
         const newUrl = {
             longUrl: newLongUrl
         }      
-        fetch("http://localhost:9005/api/url/shorten", {
+        fetch("https://url-shortener-110.herokuapp.com/api/url/shorten", {
             method: "POST",
             body: JSON.stringify(newUrl),
             headers: {
