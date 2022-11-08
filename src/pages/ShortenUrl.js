@@ -53,7 +53,7 @@ const ShortenUrl = () => {
                             {newShortUrl &&
                             <div className="border border-dark p-3 bg-white">                               
                                 <span style={{fontSize:"15px",fontWeight:"bold"}}>Short Url:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href={newShortUrl} target="_blank">{newShortUrl}</a>
+                                <a href={newShortUrl}  rel="noreferrer" target="_blank">{newShortUrl}</a>
                             </div>}
                         </div>
                     </div>
