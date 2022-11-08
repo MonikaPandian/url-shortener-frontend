@@ -21,8 +21,7 @@ const Signup = () => {
             firstName: firstName,
             lastName: lastName,
             password: password
-        }
-         console.log(newUser)
+        }        
         fetch("http://localhost:9005/users/signup", {
             method: "POST",
             body: JSON.stringify(newUser),
@@ -31,7 +30,17 @@ const Signup = () => {
             }
         })
             .then((data) => data.json())
-            .then((res) => {console.log(res)})
+            .then((res) => {
+                if(res.message === "username is already registered"){
+                    window.alert("Email is already registered")
+                }
+                else if(res.message === "Email sent successfully"){
+                    window.alert("Account activation link sent successfully to your email")
+                }
+                else {
+                    window.alert("Internal server error. please try again later")
+                }
+            })
             .catch((e) => console.log(e));
     }
 

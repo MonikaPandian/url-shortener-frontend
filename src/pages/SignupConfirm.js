@@ -9,14 +9,14 @@ const SignupConfirm = () => {
     const[error, setError] = useState(false)
 
     const verifyAccount = () => {                
-        fetch(`http://localhost:9005/users/signup/verify-account/${id}/${token}`, {
+        fetch(`https://url-shortener-110.herokuapp.com/users/signup/verify-account/${id}/${token}`, {
             method: "POST",           
             headers: {
                 "Content-Type": "application/json",
             }
         })
             .then((data) => data.json())
-            .then((res) => {console.log(res)
+            .then((res) => {
                 if(res.message === "Email verified successfully"){
                     setVerified(true)
                 }
