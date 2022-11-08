@@ -83,7 +83,7 @@ const Signin = () => {
                                         <span onClick={()=>navigate("/forgot-password")} className="text-primary" style={{ cursor: "pointer", textDecoration: "underline" }}>Forgot Password ?</span>
                                     </div>
                                     <div className="mt-3">
-                                        <button className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                                        <button type="submit" className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                                     </div>
                                     <div className="text-center mt-4 font-weight-light">
                                         Don't have an account? <span onClick={()=>navigate("/register")} style={{ cursor: "pointer", textDecoration: "underline" }} className="text-primary">Create</span>
