@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,6 +8,46 @@ import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
     const navigate = useNavigate();
+    const[email, setEmail] = useState("")   
+    const[password, setPassword] = useState("")
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const user = {
+            username: email,           
+            password: password
+        }     
+        console.log(user)
+        fetch("https://url-shortener-110.herokuapp.com/users/login", {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+            .then((data) => data.json())
+            .then((res) => { console.log(res)
+                if(res.message === "user not exists!!!"){
+                    window.alert("user not exists!!!")
+                }
+                else if(res.message === "Account is not activated. Email sent successfully"){
+                    window.alert("Account is not activated. Account activation sent successfully to your mail")
+                }
+                else if(res.message === "Invalid credentials"){
+                    window.alert("Invalid Login credentials")
+                }
+                else if(res.message === "Successful login"){
+                    window.alert("Successful login")
+                    navigate("/dashboard")
+                }
+                else{
+                    window.alert("Internal server error. please try again later")
+                }
+            })
+            .catch((e) => console.log(e));
+    }
+
     return (
         <div className="container-scroller">
             <div className="container-fluid page-body-wrapper">
@@ -32,18 +72,18 @@ const Signin = () => {
                                 </div>
                                 <h4>Hello! let's get started</h4>
                                 <h6 className="font-weight-light">Sign in to continue</h6>
-                                <form className="pt-3">
+                                <form onSubmit={handleSubmit} className="pt-3">
                                     <div className="form-group">
-                                        <input type="email" className="form-control form-control-lg" id="exampleInputEmail" placeholder="Email" />
+                                        <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="form-control form-control-lg" id="exampleInputEmail" placeholder="Email" />
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" className="form-control form-control-lg" id="exampleInputPassword" placeholder="Password" />
+                                        <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="form-control form-control-lg" id="exampleInputPassword" placeholder="Password" />
                                     </div>
                                     <div className="mb-4">
                                         <span onClick={()=>navigate("/forgot-password")} className="text-primary" style={{ cursor: "pointer", textDecoration: "underline" }}>Forgot Password ?</span>
                                     </div>
                                     <div className="mt-3">
-                                        <span className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</span>
+                                        <button className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                                     </div>
                                     <div className="text-center mt-4 font-weight-light">
                                         Don't have an account? <span onClick={()=>navigate("/register")} style={{ cursor: "pointer", textDecoration: "underline" }} className="text-primary">Create</span>
