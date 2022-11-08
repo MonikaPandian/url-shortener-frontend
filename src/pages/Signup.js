@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,6 +8,33 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const navigate = useNavigate();
+    const[email, setEmail] = useState("")
+    const[firstName, setFirstName] = useState("")
+    const[lastName, setLastName] = useState("")
+    const[password, setPassword] = useState("")
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const newUser = {
+            username: email,
+            firstName: firstName,
+            lastName: lastName,
+            password: password
+        }
+         console.log(newUser)
+        fetch("http://localhost:9005/users/signup", {
+            method: "POST",
+            body: JSON.stringify(newUser),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+            .then((data) => data.json())
+            .then((res) => {console.log(res)})
+            .catch((e) => console.log(e));
+    }
+
     return (
         <div className="container-scroller">
             <div className="container-fluid page-body-wrapper">
@@ -32,18 +59,18 @@ const Signup = () => {
                                 </div>
                                 <h4>New here?</h4>
                                 <h6 className="font-weight-light">Signing up is easy. It only takes a few steps</h6>
-                                <form className="pt-3">
+                                <form onSubmit={handleSubmit} className="pt-3">
                                     <div className="form-group">
-                                        <input type="email" className="form-control form-control-lg" id="exampleInputEmail" placeholder="Email" />
+                                        <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="form-control form-control-lg" id="exampleInputEmail" placeholder="Email" />
                                     </div>
                                     <div className="form-group">
-                                        <input type="text" className="form-control form-control-lg" id="exampleInputFirstName" placeholder="First Name" />
+                                        <input type="text"  value={firstName} onChange={(e)=>setFirstName(e.target.value)}  className="form-control form-control-lg" id="exampleInputFirstName" placeholder="First Name" />
                                     </div>
                                     <div className="form-group">
-                                        <input type="text" className="form-control form-control-lg" id="exampleInputLastName" placeholder="Last Name" />
+                                        <input type="text"  value={lastName} onChange={(e)=>setLastName(e.target.value)}  className="form-control form-control-lg" id="exampleInputLastName" placeholder="Last Name" />
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" className="form-control form-control-lg" id="exampleInputPassword" placeholder="Password" />
+                                        <input type="password"  value={password} onChange={(e)=>setPassword(e.target.value)}  className="form-control form-control-lg" id="exampleInputPassword" placeholder="Password" />
                                     </div>
                                     <div className="mb-4">
                                         <div className="form-check">

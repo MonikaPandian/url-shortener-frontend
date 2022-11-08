@@ -7,6 +7,7 @@ import ResetPassword from "./pages/ResetPassword";
 import ShortenUrl from "./pages/ShortenUrl";
 import UrlTable from "./pages/UrlTable";
 import Dashboard from "./pages/Dashboard";
+import SignupConfirm from "./pages/SignupConfirm";
 
 const App = () => {
 
@@ -16,7 +17,7 @@ const App = () => {
         <Route path="/" element={<Signin />} />
         <Route path="/login" element={<Signin />} />
         <Route path="/register" element={<Signup />} />
-        <Route path="/register/verify/:id/:token" element={<Signup />} />
+        <Route path="/register/verify/:id/:token" element={<SignupConfirm />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />        
         <Route path="/dashboard" element={<Dashboard />} />
