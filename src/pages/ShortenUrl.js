@@ -20,7 +20,7 @@ const ShortenUrl = () => {
             }
         })
         .then((data)=> data.json())
-        .then((data)=> { console.log(data)
+        .then((data)=> { 
             if(data.message === "success"){
                 setNewShortUrl(data.shortUrl)
             }
