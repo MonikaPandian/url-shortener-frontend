@@ -19,10 +19,9 @@ const Signin = () => {
             password: password
         }     
         console.log(user)
-        fetch("http://localhost:9005/users/login", {
+        fetch("https://url-shortener-110.herokuapp.com/users/login", {
             method: "POST",
             body: JSON.stringify(user),
-
             headers: {
                 "Content-Type": "application/json",
             }
