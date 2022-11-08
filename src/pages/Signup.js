@@ -22,7 +22,7 @@ const Signup = () => {
             lastName: lastName,
             password: password
         }        
-        fetch("http://localhost:9005/users/signup", {
+        fetch("https://url-shortener-110.herokuapp.com/users/signup", {
             method: "POST",
             body: JSON.stringify(newUser),
             headers: {
