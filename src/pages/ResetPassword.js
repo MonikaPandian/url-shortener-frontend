@@ -28,14 +28,14 @@ const ResetPassword = () => {
         })
             .then((data) => data.json())
             .then((res) => { console.log(res)
-                if(res.message === "user not exists!!!"){
-                    window.alert("user not exists!!!. If you are a new user sign up to create an account")
+                if(res.message === "User not exists!!"){
+                    window.alert("User not exists!!!. If you are a new user sign up to create an account")
                 }
-                else if(res.message === "Account is not activated"){
-                    window.alert("Account is not activated. Please login to activate your account.")
+                else if(res.message === "Password updated"){
+                    window.alert("Password updated")
                 }
-                else if(res.message === "success"){
-                    window.alert("Password reset link sent successfully to your mail")                                     
+                else if(res.message === "Token expired"){
+                    window.alert("Token expired")                                     
                 }
                 else{
                     window.alert("Internal server error. please try again later")
