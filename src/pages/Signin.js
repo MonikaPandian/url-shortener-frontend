@@ -18,8 +18,8 @@ const Signin = () => {
             username: email,           
             password: password
         }     
-        console.log(user)
-        fetch("http://localhost:9005/users/login", {
+
+        fetch("https://url-shortener-110.herokuapp.com/users/login", {
             method: "POST",
             body: JSON.stringify(user),
             headers: {
@@ -27,9 +27,9 @@ const Signin = () => {
             }
         })
             .then((data) => data.json())
-            .then((res) => { console.log(res)
+            .then((res) => { 
                 if(res.message === "user not exists!!!"){
-                    window.alert("user not exists!!!")
+                    window.alert("user not exists!!!. If you are a new user sign up to create a account")
                 }
                 else if(res.message === "Account is not activated. Email sent successfully"){
                     window.alert("Account is not activated. Account activation sent successfully to your mail")
@@ -39,6 +39,7 @@ const Signin = () => {
                 }
                 else if(res.message === "Successful login"){
                     window.alert("Successful login")
+                    localStorage.setItem("userDetails", JSON.stringify(res))
                     navigate("/dashboard")
                 }
                 else{
@@ -83,7 +84,7 @@ const Signin = () => {
                                         <span onClick={()=>navigate("/forgot-password")} className="text-primary" style={{ cursor: "pointer", textDecoration: "underline" }}>Forgot Password ?</span>
                                     </div>
                                     <div className="mt-3">
-                                        <button type="submit" className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                                        <button className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                                     </div>
                                     <div className="text-center mt-4 font-weight-light">
                                         Don't have an account? <span onClick={()=>navigate("/register")} style={{ cursor: "pointer", textDecoration: "underline" }} className="text-primary">Create</span>

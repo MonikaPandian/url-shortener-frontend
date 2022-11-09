@@ -36,6 +36,7 @@ const Signup = () => {
                 }
                 else if(res.message === "Email sent successfully"){
                     window.alert("Account activation link sent successfully to your email")
+                    navigate("/login")
                 }
                 else {
                     window.alert("Internal server error. please try again later")

@@ -1,6 +1,16 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 
 const Navbar = () => {
+    const [userDetails, setUserDetails] = useState({});
+    const {username} = userDetails
+ 
+    useEffect(() => {
+        const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+        if (userDetails) {           
+            setUserDetails(userDetails);
+        }
+    }, []);
+
     return (
         <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
@@ -10,7 +20,7 @@ const Navbar = () => {
                 <ul className="navbar-nav navbar-nav-right">                  
                     <li className="nav-item nav-profile dropdown">
                         <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                        <i className="fa-solid fa-user"></i>username
+                        <i className="fa-solid fa-user"></i>{username}
                         </a>
                         <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a className="dropdown-item">
