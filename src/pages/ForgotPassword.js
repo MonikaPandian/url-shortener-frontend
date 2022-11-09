@@ -26,23 +26,18 @@ const ForgotPassword = () => {
         })
             .then((data) => data.json())
             .then((res) => { console.log(res)
-                // if(res.message === "user not exists!!!"){
-                //     window.alert("user not exists!!!. If you are a new user sign up to create a account")
-                // }
-                // else if(res.message === "Account is not activated. Email sent successfully"){
-                //     window.alert("Account is not activated. Account activation sent successfully to your mail")
-                // }
-                // else if(res.message === "Invalid credentials"){
-                //     window.alert("Invalid Login credentials")
-                // }
-                // else if(res.message === "Successful login"){
-                //     window.alert("Successful login")
-                //     localStorage.setItem("userDetails", JSON.stringify(res))
-                //     navigate("/dashboard")
-                // }
-                // else{
-                //     window.alert("Internal server error. please try again later")
-                // }
+                if(res.message === "user not exists!!!"){
+                    window.alert("user not exists!!!. If you are a new user sign up to create an account")
+                }
+                else if(res.message === "Account is not activated"){
+                    window.alert("Account is not activated. Please login to activate your account.")
+                }
+                else if(res.message === "success"){
+                    window.alert("Password reset link sent successfully to your mail")                                     
+                }
+                else{
+                    window.alert("Internal server error. please try again later")
+                }
             })
             .catch((e) => console.log(e));
     }
@@ -74,7 +69,7 @@ const ForgotPassword = () => {
                                         <input type="email" onChange={(e)=>setEmail(e.target.value)} value={email} className="form-control form-control-lg" id="exampleInputEmail" placeholder="Email" />
                                     </div>
                                     <div className="mt-3">
-                                        <span className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SEND PASSWORD RESET MAIL</span>
+                                        <button className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SEND PASSWORD RESET MAIL</button>
                                     </div>
                                 </form>
                             </div>
