@@ -15,11 +15,12 @@ const ResetPassword = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if(newPassword === confirmPassword){
         const updatePassword = {
            password: newPassword                     
         }     
 
-        fetch(`http://localhost:9005/users/reset-password/${id}/${token}`, {
+        fetch(`https://url-shortener-110.herokuapp.com/users/reset-password/${id}/${token}`, {
             method: "POST",
             body: JSON.stringify(updatePassword),
             headers: {
@@ -27,7 +28,7 @@ const ResetPassword = () => {
             }
         })
             .then((data) => data.json())
-            .then((res) => { console.log(res)
+            .then((res) => { 
                 if(res.message === "User not exists!!"){
                     window.alert("User not exists!!!. If you are a new user sign up to create an account")
                 }
@@ -42,6 +43,10 @@ const ResetPassword = () => {
                 }
             })
             .catch((e) => console.log(e));
+        }
+        else{
+            window.alert("Passwords does not match")
+        }
     }
 
     return (
