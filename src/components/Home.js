@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
 const Home = () => {
+    const [todayUrls, setTodayUrls] = useState(null)
     const current = new Date()
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
     const [userDetails, setUserDetails] = useState({});
-    const { username } = userDetails
+    const { username, firstName, lastName } = userDetails
 
     useEffect(() => {
         const userDetails = JSON.parse(localStorage.getItem('userDetails'));
@@ -14,13 +15,24 @@ const Home = () => {
         }
     }, []);
 
+    const getTodayUrls = () => {
+        fetch("https://url-shortener-110.herokuapp.com/api/url/today", {
+            method: "GET"
+        })
+            .then((data) => data.json())
+            .then((res) => setTodayUrls(res))
+            .catch((e) => console.log(e));
+    }
+
+    useEffect(() => getTodayUrls, [todayUrls]);
+
     return (
         <div>
             <div className="row">
                 <div className="col-md-12 grid-margin">
                     <div className="row">
                         <div className="col-12 col-xl-8 mb-4 mb-xl-0">
-                            <h3 className="font-weight-bold">Welcome {username}</h3>
+                            <h3 className="font-weight-bold">Welcome {firstName} {lastName}</h3>
                         </div>
                         <div className="col-12 col-xl-4">
                             <div className="justify-content-end d-flex">
@@ -41,7 +53,7 @@ const Home = () => {
                             <div className="card card-dark-blue">
                                 <div className="card-body d-flex flex-column align-items-center">
                                     <p className="mb-4">Number of URLs created today</p>
-                                    <p className="fs-30 mb-2">4</p>
+                                    <p className="fs-30 mb-2">{todayUrls}</p>
                                 </div>
                             </div>
                         </div>
