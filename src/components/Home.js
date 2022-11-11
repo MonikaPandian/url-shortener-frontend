@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import MonthUrls from './MonthUrls'
+import TodayUrls from './TodayUrls'
 
 const Home = () => {
-    const [todayUrls, setTodayUrls] = useState(null)
     const current = new Date()
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
@@ -14,17 +15,6 @@ const Home = () => {
             setUserDetails(userDetails);
         }
     }, []);
-
-    const getTodayUrls = () => {
-        fetch("https://url-shortener-110.herokuapp.com/api/url/today", {
-            method: "GET"
-        })
-            .then((data) => data.json())
-            .then((res) => setTodayUrls(res))
-            .catch((e) => console.log(e));
-    }
-
-    useEffect(() => getTodayUrls, [todayUrls]);
 
     return (
         <div>
@@ -49,22 +39,8 @@ const Home = () => {
             <div className="row">
                 <div className="col-md-6 grid-margin transparent">
                     <div className="row">
-                        <div className="col-md-6 stretch-card transparent">
-                            <div className="card card-dark-blue">
-                                <div className="card-body d-flex flex-column align-items-center">
-                                    <p className="mb-4">Number of URLs created today</p>
-                                    <p className="fs-30 mb-2">{todayUrls}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 stretch-card transparent">
-                            <div className="card card-light-danger">
-                                <div className="card-body d-flex flex-column align-items-center">
-                                    <p className="mb-4">Number of URLs created this month</p>
-                                    <p className="fs-30 mb-2">50</p>
-                                </div>
-                            </div>
-                        </div>
+                        <TodayUrls/>
+                        <MonthUrls/>
                     </div>
                 </div>
             </div>
