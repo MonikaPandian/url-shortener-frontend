@@ -4,7 +4,7 @@ const MonthUrls = () => {
     const [monthUrls, setMonthUrls] = useState(null)
 
     const getMonthUrls = () => {
-        fetch("https://url-shortener-110.herokuapp.com/api/url/month", {
+        fetch("https://url-shortener-backend-silk.vercel.app/api/url/month", {
             method: "GET"
         })
             .then((data) => data.json())

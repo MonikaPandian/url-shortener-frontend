@@ -19,7 +19,7 @@ const Signin = () => {
             password: password
         }     
 
-        fetch("https://url-shortener-110.herokuapp.com/users/login", {
+        fetch("https://url-shortener-backend-silk.vercel.app/users/login", {
             method: "POST",
             body: JSON.stringify(user),
             headers: {

@@ -7,7 +7,7 @@ const UrlTable = () => {
     const[urls, setUrls] = useState([])
 
     const getUrls = () => {
-        fetch("https://url-shortener-110.herokuapp.com/api/url", {
+        fetch("https://url-shortener-backend-silk.vercel.app/api/url", {
             method: "GET"
         })
             .then((data) => data.json())
