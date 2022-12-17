@@ -8,7 +8,7 @@ const TodayUrls = () => {
             method: "GET"
         })
             .then((data) => data.json())
-            .then((res) => setTodayUrls(res))
+            .then((res) => {console.log(res);setTodayUrls(res)})
             .catch((e) => console.log(e));
     }
 
