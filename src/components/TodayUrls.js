@@ -12,7 +12,7 @@ const TodayUrls = () => {
             .catch((e) => console.log(e));
     }
 
-    useEffect(() => getTodayUrls, [todayUrls]);
+    useEffect(() => getTodayUrls(), [todayUrls]);
     
     return (
         <div className="col-md-6 stretch-card transparent">

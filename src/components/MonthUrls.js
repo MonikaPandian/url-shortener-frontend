@@ -12,7 +12,7 @@ const MonthUrls = () => {
             .catch((e) => console.log(e));
     }
 
-    useEffect(() => getMonthUrls, [monthUrls]);
+    useEffect(() => getMonthUrls(), [monthUrls]);
 
     return (
         <div className="col-md-6 stretch-card transparent">
