@@ -3,8 +3,9 @@ import MonthUrls from './MonthUrls'
 import TodayUrls from './TodayUrls'
 
 const Home = () => {
-    const current = new Date()
-    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+    const [todayUrls, setTodayUrls] = useState("")
 
     const [userDetails, setUserDetails] = useState({});
     const { username, firstName, lastName } = userDetails
@@ -15,6 +16,17 @@ const Home = () => {
             setUserDetails(userDetails);
         }
     }, []);
+
+    const getTodayUrls = () => {
+        fetch("https://url-shortener-backend-five.vercel.app/api/url/today", {
+            method: "GET"
+        })
+            .then((data) => data.json())
+            .then((res) => {console.log(res);setTodayUrls(res)})
+            .catch((e) => console.log(e));
+    }
+
+    useEffect(() => getTodayUrls, [todayUrls]);
 
     return (
         <div>
@@ -39,8 +51,15 @@ const Home = () => {
             <div className="row">
                 <div className="col-md-6 grid-margin transparent">
                     <div className="row">
-                        <TodayUrls/>
-                        <MonthUrls/>
+                        <div className="col-md-6 stretch-card transparent">
+                            <div className="card card-dark-blue">
+                                <div className="card-body d-flex flex-column align-items-center">
+                                    <p className="mb-4">Number of URLs created today</p>
+                                    <p className="fs-30 mb-2">{todayUrls}</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
