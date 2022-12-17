@@ -19,7 +19,7 @@ const ResetPassword = () => {
         const updatePassword = {
            password: newPassword                     
         }     
-
+       
         fetch(`https://url-shortener-backend-five.vercel.app/users/reset-password/${id}/${token}`, {
             method: "POST",
             body: JSON.stringify(updatePassword),
