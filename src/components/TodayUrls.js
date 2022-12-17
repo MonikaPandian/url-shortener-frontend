@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react'
 
 const TodayUrls = () => {
     const [todayUrls, setTodayUrls] = useState(null)
-
+    
     const getTodayUrls = () => {
         fetch("https://url-shortener-backend-five.vercel.app/api/url/today", {
             method: "GET"
