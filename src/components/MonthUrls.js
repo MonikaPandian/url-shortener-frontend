@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 const MonthUrls = () => {
-    const [monthUrls, setMonthUrls] = useState(null)
+    const [monthUrls, setMonthUrls] = useState("")
 
     const getMonthUrls = () => {
         fetch("https://url-shortener-backend-five.vercel.app/api/url/month", {

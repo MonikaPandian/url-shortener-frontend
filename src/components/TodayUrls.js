@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 
 const TodayUrls = () => {
-    const [todayUrls, setTodayUrls] = useState(null)
+    const [todayUrls, setTodayUrls] = useState("")
     console.log(todayUrls)
     const getTodayUrls = () => {
         fetch("https://url-shortener-backend-five.vercel.app/api/url/today", {
