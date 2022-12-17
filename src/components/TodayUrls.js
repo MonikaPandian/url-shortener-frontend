@@ -2,17 +2,18 @@ import React,{useState, useEffect} from 'react'
 
 const TodayUrls = () => {
     const [todayUrls, setTodayUrls] = useState("")
-    console.log(todayUrls)
+    
     const getTodayUrls = () => {
         fetch("https://url-shortener-backend-five.vercel.app/api/url/today", {
             method: "GET"
         })
             .then((data) => data.json())
-            .then((res) => {console.log(res);setTodayUrls(res)})
+            .then((res) => setTodayUrls(res))
             .catch((e) => console.log(e));
     }
 
     useEffect(() => getTodayUrls, [todayUrls]);
+    
     return (
         <div className="col-md-6 stretch-card transparent">
             <div className="card card-dark-blue">
