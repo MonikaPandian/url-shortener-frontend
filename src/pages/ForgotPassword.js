@@ -17,7 +17,7 @@ const ForgotPassword = () => {
             username: email,                       
         }     
 
-        fetch("https://url-shortener-backend-silk.vercel.app/users/forgot-password", {
+        fetch("https://url-shortener-backend-five.vercel.app/users/forgot-password", {
             method: "POST",
             body: JSON.stringify(user),
             headers: {

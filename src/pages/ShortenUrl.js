@@ -12,7 +12,7 @@ const ShortenUrl = () => {
         const newUrl = {
             longUrl: newLongUrl
         }      
-        fetch("https://url-shortener-backend-silk.vercel.app/api/url/shorten", {
+        fetch("https://url-shortener-backend-five.vercel.app/api/url/shorten", {
             method: "POST",
             body: JSON.stringify(newUrl),
             headers: {

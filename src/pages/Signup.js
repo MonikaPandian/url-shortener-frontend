@@ -22,7 +22,7 @@ const Signup = () => {
             lastName: lastName,
             password: password
         }        
-        fetch("https://url-shortener-backend-silk.vercel.app/users/signup", {
+        fetch("https://url-shortener-backend-five.vercel.app/users/signup", {
             method: "POST",
             body: JSON.stringify(newUser),
             headers: {

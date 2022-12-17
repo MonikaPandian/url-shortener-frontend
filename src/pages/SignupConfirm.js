@@ -9,7 +9,7 @@ const SignupConfirm = () => {
     const [error, setError] = useState(false)
 
     const verifyAccount = () => {
-        fetch(`https://url-shortener-backend-silk.vercel.app/users/signup/verify-account/${id}/${token}`, {
+        fetch(`https://url-shortener-backend-five.vercel.app/users/signup/verify-account/${id}/${token}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

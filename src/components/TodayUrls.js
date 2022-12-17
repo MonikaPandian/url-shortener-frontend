@@ -4,7 +4,7 @@ const TodayUrls = () => {
     const [todayUrls, setTodayUrls] = useState(null)
 
     const getTodayUrls = () => {
-        fetch("https://url-shortener-backend-silk.vercel.app/api/url/today", {
+        fetch("https://url-shortener-backend-five.vercel.app/api/url/today", {
             method: "GET"
         })
             .then((data) => data.json())
